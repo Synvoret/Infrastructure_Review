@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Home
+{% endblock title %}
+
+{% block content %}
+        {% if message %}
+            <div class="alert alert-danger" role="alert">
+                {{ message }}
+            </div>
+        {% endif %}
+
+        <h5 class="text-center">Obchody infrastruktury elektroenergetycznej SN i nN w Narodowym Centrum Promieniowania Synchrotronowego w Krakowie.</h5>
+        <img src={% static 'solaris.png' %} class="rounded mx-auto d-block" alt="solaris_picture">
+
+{% endblock content %}

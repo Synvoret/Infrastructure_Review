@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Tour Edited
+{% endblock title %}
+
+{% block content %}
+
+    {% if "edit_tour" %}
+        <div class="alert alert-success" role="alert">
+            Obchód z dnia: {{ date|safe }} został edytowany poprawnie.
+        </div>
+    {% endif %}
+
+    {% if "new_tour" %}
+        <div class="alert alert-success" role="alert">
+            Obchód z dnia: {{ date|safe }} został zapisany poprawnie.
+        </div>
+    {% endif %}
+
+{% endblock content %}

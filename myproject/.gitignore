@@ -1,0 +1,6 @@
+# Określamy tu co chcemy, żeby było ignorowane przez Git-a
+ignored.txt
+
+
+# można dodawać katalog jako /nazwa_katalogu
+/.idea

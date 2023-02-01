@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+    {% if error_message %}
+        <div class="alert alert-danger" role="alert">
+            {{ error_message }}
+        </div>
+    {% endif %}
+
+
+    <p>u: admin, h:admin</p>
+    <form action="" method="POST" autocomplete="off">
+        {% csrf_token %}
+        <div class="container">
+            <div class="row mb-3">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Użytkownik</label>
+                <div class="col-sm-2">
+                    {{ form.username }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">Hasło</label>
+                <div class="col-sm-2">
+                    {{ form.password }}
+                </div>
+            </div>
+            <button type='submit' class="btn btn-outline-success btn-sm">Zaloguj się</button>
+        </div>
+    </form>
+{% endblock content %}

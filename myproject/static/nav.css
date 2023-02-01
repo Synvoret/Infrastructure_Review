@@ -1,0 +1,22 @@
+.nav {
+    box-shadow: 2px 2px 5px;
+    border-radius: 10px;
+}
+
+.user {
+    color: green;
+}
+
+.nav-link {
+    color: black;
+    font-weight: bold;
+    text-shadow: 5px 5px #ddd;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.nav-link:hover {
+    color: red;
+    text-shadow: none;
+}

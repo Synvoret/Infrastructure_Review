@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Tour History
+{% endblock title %}
+
+{% block content %}
+    <table class="table table-bordered table-sm caption-top">
+        <caption><h5 class="text-center">Historia obchodów</h5></caption>
+        <thead>
+            <tr>
+                <th scope="col">Data</th>
+                <th scope="col">Wykonał</th>
+                <th scope="col">Akcje</th>
+            </tr>
+        </thead>
+
+        {% for tour in tours %}
+                <tbody>
+                    <tr>
+                        <td>{{ tour.date|safe }}</td>
+                        <td>{{ tour.author }}</td>
+                        <td>
+                            <a href="{% url 'tour:edit-tour' tour.id %}"><button class="btn btn-outline-success btn-sm">Edytuj</button></a>
+                            <a href="{% url 'tour:delete-tour' tour.id %}"><button name="deleting" class="btn btn-outline-danger btn-sm">Usuń</button></a>
+                        </td>
+                    </tr>
+                </tbody> 
+        {% endfor %}
+        
+        {% include 'tour/includes/period.html' with form=form %}
+
+    </table>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">poprzedni</a>
+                    <a class="page-link" href="?page=1">Pierwszy</a>
+                </li>
+            {% endif %}
+
+            <li class="page-item"><a class="page-link disabled" href="#">Arkusz {{ page_obj.number }} z {{ page_obj.paginator.num_pages }}</a></li>
+
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">następny</a>
+                    <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Ostatni</a>
+                </li>
+            {% endif %}
+
+        </ul>
+    </nav>
+{% endblock content %}

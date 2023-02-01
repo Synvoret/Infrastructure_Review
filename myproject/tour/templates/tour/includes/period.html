@@ -1,0 +1,23 @@
+<form action="" method='GET'>
+
+    {% csrf_token %}
+    <thead>
+        <tr>
+            <th scope="col">Okres</th>
+        </tr>
+        <tr>
+            <td>
+                <label>Data od: </label>
+                <input type="date" name="date-from">
+            </td>
+            <td>
+                <label>Data do: </label>
+                <input type="date" name="date-to">
+            </td>
+            <td>
+                <input type="submit" class="btn btn-outline-primary btn-sm" value="Filtruj">
+            </td>
+        </tr>
+    </thead>
+    
+</form>

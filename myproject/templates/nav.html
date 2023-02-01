@@ -1,0 +1,46 @@
+{% url 'login' as path_to_login %}
+{% url 'logout' as path_to_logout %}
+{% url 'tour:index' as path_to_index %}
+{% url 'tour:new-tour' as path_to_new_tour %}
+{% url 'tour:charts' as path_to_charts %}
+{% url 'tour:history' as path_to_history %}
+
+
+<ul class="nav nav-tabs bg-light">
+    
+    <li class="nav-item">
+        <a class="nav-link {% if request.path == path_to_index %}active{% endif %}" aria-current="page" href="{{ path_to_index }}">Start</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link {% if request.path == path_to_new_tour %}active{% endif %}" href="{{ path_to_new_tour }}">Nowy Obchód</a>
+    </li>
+
+    {% if request.user.is_authenticated %}
+        <li class="nav-item">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle {% if request.path == path_to_charts %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Wykresy
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" name="traf_temp" href="{% url 'tour:charts' 'trafo_temp' %}">Transformatory</a></li>
+                    <li><a class="dropdown-item" name="ups_temp" href="{% url 'tour:charts' 'ups_temp' %}">UPSy</a></li>
+                    <li><a class="dropdown-item" name="bat_temp" href="{% url 'tour:charts' 'bat_temp' %}">Baterie Kondensatorów</a></li>
+                    <li><a class="dropdown-item" name="bat_temp" href="{% url 'tour:charts' 'rge_ac' %}">RGE-A,C</a></li>
+                </ul>
+            </li>
+        </li>
+    
+        <li class="nav-item">
+            <a class="nav-link {% if request.path == path_to_history %}active{% endif %}" href="{{ path_to_history }}">Historia</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link user {% if request.path == path_to_logout %}active{% endif %}" href="{{ path_to_logout }}">Wyloguj się, <i class="user">{{ user }}</i></a>
+        </li>
+    {% else %}
+        <li class="nav-item">
+            <a class="nav-link {% if request.path == path_to_login %}active{% endif %}" href="{{ path_to_login }}">Zaloguj się</a>
+        </li>
+    {% endif %}
+
+</ul>

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Charts
+{% endblock title %}
+
+{% block content %}
+    <div class="alert alert-danger" role="alert">
+        <strong>Czy na pewno chcesz usunąć ten obchód?</strong><br>
+        Obchód z dnia: {{ tour.date|safe }}
+    </div>
+    <div class="container px-4 text-center">
+        <form action="" method='POST'>
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-danger btn-sm">Tak, usuń ten obchód</button>
+        </form>
+        <a href="{% url 'tour:history' %}"><button class="btn btn-outline-success btn-sm">Cofnij</button></a>
+    </div>
+{% endblock content %}

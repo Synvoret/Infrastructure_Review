@@ -1,0 +1,608 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    New Tour
+{% endblock title %}
+
+{% block css_file %}{% static 'tour/new_tour.css' %}{% endblock css_file %}
+
+{% block content %}
+
+        {% if message %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        {% elif message_bad %}
+            {{ message_bad }}
+        {% endif %}
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            <table class="table table-bordered table-striped table-sm caption-top">
+                <caption><h5 class="text-center">Protokół obchodu systemów elektrycznych nn i SN NCPS Solaris v18</h5></caption>
+                <thead>
+                    <tr>
+                        <th scope="col"><h6>Urządzenie</h6></th>
+                        <th scope="col" colspan="2"><h6>Parametr</h6></th>
+                        <th scope="col" colspan="2"><h6>Parametr</h6></th>
+                        <th scope="col" colspan="2"><h6>Parametr</h6></th>
+                        <th scope="col"><h6>Uwagi</h6></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <th scope="row">Trans TR1.1</th>
+                        <td>Temp. A1 [℃]</td>
+                        <td>{{ form.tr11_temp_A1 }}</td>
+                        <td>Temp. A2 [℃]</td>
+                        <td>{{ form.tr11_temp_A2 }}</td>
+                        <td>Temp. A3 [℃]</td>
+                        <td>{{ form.tr11_temp_A3 }}</td>
+                        <td>{{ form.tr11_notes }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Trans TR1.2</th>
+                        <td>Temp. A1 [℃]</td>
+                        <td>{{ form.tr12_temp_A1 }}</td>
+                        <td>Temp. A2 [℃]</td>
+                        <td>{{ form.tr12_temp_A2 }}</td>
+                        <td>Temp. A3 [℃]</td>
+                        <td>{{ form.tr12_temp_A3 }}</td>
+                        <td>{{ form.tr12_notes }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Trans TR2.1</th>
+                        <td>Temp. A1 [℃]</td>
+                        <td>{{ form.tr21_temp_A1 }}</td>
+                        <td>Temp. A2 [℃]</td>
+                        <td>{{ form.tr21_temp_A2 }}</td>
+                        <td>Temp. A3 [℃]</td>
+                        <td>{{ form.tr21_temp_A3 }}</td>
+                        <td>{{ form.tr21_notes }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Trans TR3.1</th>
+                        <td>Temp. A1 [℃]</td>
+                        <td>{{ form.tr31_temp_A1 }}</td>
+                        <td>Temp. A2 [℃]</td>
+                        <td>{{ form.tr31_temp_A2 }}</td>
+                        <td>Temp. A3 [℃]</td>
+                        <td>{{ form.tr31_temp_A3 }}</td>
+                        <td>{{ form.tr31_notes }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Trans TR4.1</th>
+                        <td>Temp. A1 [℃]</td>
+                        <td>{{ form.tr41_temp_A1 }}</td>
+                        <td>Temp. A2 [℃]</td>
+                        <td>{{ form.tr41_temp_A2 }}</td>
+                        <td>Temp. A3 [℃]</td>
+                        <td>{{ form.tr41_temp_A3 }}</td>
+                        <td>{{ form.tr41_notes }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Trans TR4.2</th>
+                        <td>Temp. A1 [℃]</td>
+                        <td>{{ form.tr42_temp_A1 }}</td>
+                        <td>Temp. A2 [℃]</td>
+                        <td>{{ form.tr42_temp_A2 }}</td>
+                        <td>Temp. A3 [℃]</td>
+                        <td>{{ form.tr42_temp_A3 }}</td>
+                        <td>{{ form.tr42_notes }}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">SN pole nr 3 (odczyt z anal.)</th>
+                        <td>V12 [kV]</td>
+                        <td>{{ form.sn_field_3_v12 }}</td>
+                        <td>V23 [kV]</td>
+                        <td>{{ form.sn_field_3_v23 }}</td>
+                        <td>V31 [kV]</td>
+                        <td>{{ form.sn_field_3_v31 }}</td>
+                        <td>{{ form.sn_field_3_notes }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">SN pole nr 5 (odczyt z anal.)</th>
+                        <td>V12 [kV]</td>
+                        <td>{{ form.sn_field_5_v12 }}</td>
+                        <td>V23 [kV]</td>
+                        <td>{{ form.sn_field_5_v23 }}</td>
+                        <td>V31 [kV]</td>
+                        <td>{{ form.sn_field_5_v31 }}</td>
+                        <td>{{ form.sn_field_5_notes }}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">SZR SN Stan</th>
+                        <td>Wyłącznik Pole nr 3</td>
+                        <td>{{ form.breaker_3 }}</td>
+                        <td>Wyłącznik Pole nr 4</td>
+                        <td>{{ form.breaker_4 }}</td>
+                        <td>Wyłącznik Pole nr 5</td>
+                        <td>{{ form.breaker_5 }}</td>
+                        <td>{{ form.szr_sn_stan_notes }}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">SZR Sterowanie x3 (Pole 3,4,5</th>
+                        <td>Auto/Lokalne</td>
+                        <td>{{ form.controling }}</td>
+                        <td>SZR Aktywność</td>
+                        <td>{{ form.szr_activity }}</td>
+                        <td>SZR Blokada</td>
+                        <td>{{ form.szr_blockade }}</td>
+                        <td>{{ form.szr_controling_notes }}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">SZR pole nr 3 THDS U</th>
+                        <td>THDS V12 [%]</td>
+                        <td>{{ form.sn_field_3_thds_v12 }}</td>
+                        <td>THDS V23 [%]</td>
+                        <td>{{ form.sn_field_3_thds_v23 }}</td>
+                        <td>THDS V31 [%]</td>
+                        <td>{{ form.sn_field_3_thds_v31 }}</td>
+                        <td>{{ form.sn_field_3_thds_notes }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">SZR pole nr 5 THDS U</th>
+                        <td>THDS V12 [%]</td>
+                        <td>{{ form.sn_field_5_thds_v12 }}</td>
+                        <td>THDS V23 [%]</td>
+                        <td>{{ form.sn_field_5_thds_v23 }}</td>
+                        <td>THDS V31 [%]</td>
+                        <td>{{ form.sn_field_5_thds_v31 }}</td>
+                        <td>{{ form.sn_field_5_thds_notes }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">SZR pole nr 3 cosΦ</th>
+                        <td>CosΦ a</td>
+                        <td>{{ form.sn_field_3_cosfi_a }}</td>
+                        <td>CosΦ b</td>
+                        <td>{{ form.sn_field_3_cosfi_b }}</td>
+                        <td>CosΦ c</td>
+                        <td>{{ form.sn_field_3_cosfi_c }}</td>
+                        <td>{{ form.sn_field_3_cosfi_notes }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">SZR pole nr 5 cosΦ</th>
+                        <td>CosΦ a</td>
+                        <td>{{ form.sn_field_5_cosfi_a }}</td>
+                        <td>CosΦ b</td>
+                        <td>{{ form.sn_field_5_cosfi_b }}</td>
+                        <td>CosΦ c</td>
+                        <td>{{ form.sn_field_5_cosfi_c }}</td>
+                        <td>{{ form.sn_field_5_cosfi_notes }}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Rozdz. 1.1RG</th>
+                        <td>CosΦ 1</td>
+                        <td>{{ form.rozdz11_cosfi_1 }}</td>
+                        <td>CosΦ 2</td>
+                        <td>{{ form.rozdz11_cosfi_2 }}</td>
+                        <td>CosΦ 3</td>
+                        <td>{{ form.rozdz11_cosfi_3 }}</td>
+                        <td>{{ form.rozdz11_cosfi_notes }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Rozdz. 1.2RG</th>
+                        <td>CosΦ 1</td>
+                        <td>{{ form.rozdz12_cosfi_1 }}</td>
+                        <td>CosΦ 2</td>
+                        <td>{{ form.rozdz12_cosfi_2 }}</td>
+                        <td>CosΦ 3</td>
+                        <td>{{ form.rozdz12_cosfi_3 }}</td>
+                        <td>{{ form.rozdz12_cosfi_notes }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Rozdz. 2.1RG</th>
+                        <td>CosΦ 1</td>
+                        <td>{{ form.rozdz21_cosfi_1 }}</td>
+                        <td>CosΦ 2</td>
+                        <td>{{ form.rozdz21_cosfi_2 }}</td>
+                        <td>CosΦ 3</td>
+                        <td>{{ form.rozdz21_cosfi_3 }}</td>
+                        <td>{{ form.rozdz21_cosfi_notes }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Rozdz. 3.1RG</th>
+                        <td>CosΦ 1</td>
+                        <td>{{ form.rozdz31_cosfi_1 }}</td>
+                        <td>CosΦ 2</td>
+                        <td>{{ form.rozdz31_cosfi_2 }}</td>
+                        <td>CosΦ 3</td>
+                        <td>{{ form.rozdz31_cosfi_3 }}</td>
+                        <td>{{ form.rozdz31_cosfi_notes }}</td>
+                    </tr>
+
+                    <tr>
+                        <th class="tg-0lax" rowspan="3">UPS pom.1.34 100kVA</th>
+                        <td class="tg-0lax">L1 [%]</td>
+                        <td class="tg-0lax">{{ form.ups_1_34_l1 }}</td>
+                        <td class="tg-0lax">Stan Pracy</td>
+                        <td class="tg-0lax">{{ form.ups_1_34_working_status }}</td>
+                        <td class="tg-0lax">Temp. [℃]</td>
+                        <td class="tg-0lax">{{ form.ups_1_34_working_temp }}</td>
+                        <td class="tg-0lax" rowspan="3">{{ form.ups_1_34_notes }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">L2 [%]</td>
+                        <td class="tg-0lax">{{ form.ups_1_34_l2 }}</td>
+                        <td class="tg-0lax">Napięcie Baterii [V]</td>
+                        <td class="tg-0lax">{{ form.ups_1_34_battery_voltages }}</td>
+                        <td class="tg-0lax">Wentylatory chłodzące</td>
+                        <td class="tg-0lax">{{ form.ups_1_34_cooling_fans }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">L3 [%]</td>
+                        <td class="tg-0lax">{{ form.ups_1_34_l3 }}</td>
+                        <td class="tg-0lax">Awarie</td>
+                        <td class="tg-0lax">{{ form.ups_1_34_failures }}</td>
+                        <td class="tg-0lax" colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <th class="tg-0lax" rowspan="3">UPS tunel tech. 40kVA</th>
+                        <td class="tg-0lax">L1 [%]</td>
+                        <td class="tg-0lax">{{ form.ups_tt_l1 }}</td>
+                        <td class="tg-0lax">Stan Pracy</td>
+                        <td class="tg-0lax">{{ form.ups_tt_working_status }}</td>
+                        <td class="tg-0lax">Temp. [℃]</td>
+                        <td class="tg-0lax">{{ form.ups_tt_working_temp }}</td>
+                        <td class="tg-0lax" rowspan="3">{{ form.ups_tt_notes }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">L2 [%]</td>
+                        <td class="tg-0lax">{{ form.ups_tt_l2 }}</td>
+                        <td class="tg-0lax">Napięcie Baterii [V]</td>
+                        <td class="tg-0lax">{{ form.ups_tt_battery_voltages }}</td>
+                        <td class="tg-0lax">Wentylatory chłodzące</td>
+                        <td class="tg-0lax">{{ form.ups_tt_cooling_fans }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">L3 [%]</td>
+                        <td class="tg-0lax">{{ form.ups_tt_l3 }}</td>
+                        <td class="tg-0lax">Awarie</td>
+                        <td class="tg-0lax">{{ form.ups_tt_failures }}</td>
+                        <td class="tg-0lax" colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <th class="tg-0lax" rowspan="3">UPS GPD 80kVA</th>
+                        <td class="tg-0lax">L1 [%]</td>
+                        <td class="tg-0lax">{{ form.ups_GPD_l1 }}</td>
+                        <td class="tg-0lax">Stan Pracy</td>
+                        <td class="tg-0lax">{{ form.ups_GPD_working_status }}</td>
+                        <td class="tg-0lax">Temp. [℃]</td>
+                        <td class="tg-0lax">{{ form.ups_GPD_working_temp }}</td>
+                        <td class="tg-0lax" rowspan="3">{{ form.ups_GPD_notes }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">L2 [%]</td>
+                        <td class="tg-0lax">{{ form.ups_GPD_l2 }}</td>
+                        <td class="tg-0lax">Napięcie Baterii [V]</td>
+                        <td class="tg-0lax">{{ form.ups_GPD_battery_voltages }}</td>
+                        <td class="tg-0lax">Wentylatory chłodzące</td>
+                        <td class="tg-0lax">{{ form.ups_GPD_cooling_fans }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">L3 [%]</td>
+                        <td class="tg-0lax">{{ form.ups_GPD_l3 }}</td>
+                        <td class="tg-0lax">Awarie</td>
+                        <td class="tg-0lax">{{ form.ups_GPD_failures }}</td>
+                        <td class="tg-0lax" colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <th class="tg-0lax" rowspan="3">UPS BL-04BM 15kVA</th>
+                        <td class="tg-0lax">L1 [%]</td>
+                        <td class="tg-0lax">{{ form.ups_BL04BM_l1 }}</td>
+                        <td class="tg-0lax">Stan Pracy</td>
+                        <td class="tg-0lax">{{ form.ups_BL04BM_working_status }}</td>
+                        <td class="tg-0lax">Temp. [℃]</td>
+                        <td class="tg-0lax">{{ form.ups_BL04BM_working_temp }}</td>
+                        <td class="tg-0lax" rowspan="3">{{ form.ups_BL04BM_notes }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">L2 [%]</td>
+                        <td class="tg-0lax">{{ form.ups_BL04BM_l2 }}</td>
+                        <td class="tg-0lax">Napięcie Baterii [V]</td>
+                        <td class="tg-0lax">{{ form.ups_BL04BM_battery_voltages }}</td>
+                        <td class="tg-0lax">Wentylatory chłodzące</td>
+                        <td class="tg-0lax">{{ form.ups_BL04BM_cooling_fans }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">L3 [%]</td>
+                        <td class="tg-0lax">{{ form.ups_BL04BM_l3 }}</td>
+                        <td class="tg-0lax">Awarie</td>
+                        <td class="tg-0lax">{{ form.ups_BL04BM_failures }}</td>
+                        <td class="tg-0lax" colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <th class="tg-0lax" rowspan="3">UPS BL-06ID 15kVA</th>
+                        <td class="tg-0lax">L1 [%]</td>
+                        <td class="tg-0lax">{{ form.ups_BL06ID_l1 }}</td>
+                        <td class="tg-0lax">Stan Pracy</td>
+                        <td class="tg-0lax">{{ form.ups_BL06ID_working_status }}</td>
+                        <td class="tg-0lax">Temp. [℃]</td>
+                        <td class="tg-0lax">{{ form.ups_BL06ID_working_temp }}</td>
+                        <td class="tg-0lax" rowspan="3">{{ form.ups_BL06ID_notes }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">L2 [%]</td>
+                        <td class="tg-0lax">{{ form.ups_BL06ID_l2 }}</td>
+                        <td class="tg-0lax">Napięcie Baterii [V]</td>
+                        <td class="tg-0lax">{{ form.ups_BL06ID_battery_voltages }}</td>
+                        <td class="tg-0lax">Wentylatory chłodzące</td>
+                        <td class="tg-0lax">{{ form.ups_BL06ID_cooling_fans }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">L3 [%]</td>
+                        <td class="tg-0lax">{{ form.ups_BL06ID_l3 }}</td>
+                        <td class="tg-0lax">Awarie</td>
+                        <td class="tg-0lax">{{ form.ups_BL06ID_failures }}</td>
+                        <td class="tg-0lax" colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <th class="tg-0lax" rowspan="3">UPS BL-04ID 20kVA</th>
+                        <td class="tg-0lax">L1 [%]</td>
+                        <td class="tg-0lax">{{ form.ups_BL04ID_l1 }}</td>
+                        <td class="tg-0lax">Stan Pracy</td>
+                        <td class="tg-0lax">{{ form.ups_BL04ID_working_status }}</td>
+                        <td class="tg-0lax">Temp. [℃]</td>
+                        <td class="tg-0lax">{{ form.ups_BL04ID_working_temp }}</td>
+                        <td class="tg-0lax" rowspan="3">{{ form.ups_BL04ID_notes }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">L2 [%]</td>
+                        <td class="tg-0lax">{{ form.ups_BL04ID_l2 }}</td>
+                        <td class="tg-0lax">Napięcie Baterii [V]</td>
+                        <td class="tg-0lax">{{ form.ups_BL04ID_battery_voltages }}</td>
+                        <td class="tg-0lax">Wentylatory chłodzące</td>
+                        <td class="tg-0lax">{{ form.ups_BL04ID_cooling_fans }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">L3 [%]</td>
+                        <td class="tg-0lax">{{ form.ups_BL04ID_l3 }}</td>
+                        <td class="tg-0lax">Awarie</td>
+                        <td class="tg-0lax">{{ form.ups_BL04ID_failures }}</td>
+                        <td class="tg-0lax" colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <th class="tg-0lax" rowspan="3">UPS BL-10BM 12kVA</th>
+                        <td class="tg-0lax">L1 [%]</td>
+                        <td class="tg-0lax">{{ form.ups_BL10BM_l1 }}</td>
+                        <td class="tg-0lax">Stan Pracy</td>
+                        <td class="tg-0lax">{{ form.ups_BL10BM_working_status }}</td>
+                        <td class="tg-0lax">Temp. [℃]</td>
+                        <td class="tg-0lax">{{ form.ups_BL10BM_working_temp }}</td>
+                        <td class="tg-0lax" rowspan="3">{{ form.ups_BL10BM_notes }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">L2 [%]</td>
+                        <td class="tg-0lax">{{ form.ups_BL10BM_l2 }}</td>
+                        <td class="tg-0lax">Napięcie Baterii [V]</td>
+                        <td class="tg-0lax">{{ form.ups_BL10BM_battery_voltages }}</td>
+                        <td class="tg-0lax">Wentylatory chłodzące</td>
+                        <td class="tg-0lax">{{ form.ups_BL10BM_cooling_fans }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">L3 [%]</td>
+                        <td class="tg-0lax">{{ form.ups_BL10BM_l3 }}</td>
+                        <td class="tg-0lax">Awarie</td>
+                        <td class="tg-0lax">{{ form.ups_BL10BM_failures }}</td>
+                        <td class="tg-0lax" colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <th class="tg-0lax" rowspan="3">UPS BL-09BM 20kVA</th>
+                        <td class="tg-0lax">L1 [%]</td>
+                        <td class="tg-0lax">{{ form.ups_BL09BM_l1 }}</td>
+                        <td class="tg-0lax">Stan Pracy</td>
+                        <td class="tg-0lax">{{ form.ups_BL09BM_working_status }}</td>
+                        <td class="tg-0lax">Temp. [℃]</td>
+                        <td class="tg-0lax">{{ form.ups_BL09BM_working_temp }}</td>
+                        <td class="tg-0lax" rowspan="3">{{ form.ups_BL09BM_notes }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">L2 [%]</td>
+                        <td class="tg-0lax">{{ form.ups_BL09BM_l2 }}</td>
+                        <td class="tg-0lax">Napięcie Baterii [V]</td>
+                        <td class="tg-0lax">{{ form.ups_BL09BM_battery_voltages }}</td>
+                        <td class="tg-0lax">Wentylatory chłodzące</td>
+                        <td class="tg-0lax">{{ form.ups_BL09BM_cooling_fans }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">L3 [%]</td>
+                        <td class="tg-0lax">{{ form.ups_BL09BM_l3 }}</td>
+                        <td class="tg-0lax">Awarie</td>
+                        <td class="tg-0lax">{{ form.ups_BL09BM_failures }}</td>
+                        <td class="tg-0lax" colspan="2"></td>
+                    </tr>
+        <!--            UPSy Omega 6000-->
+                    <tr>
+                        <th class="tg-0lax" rowspan="2">UPS BL-05ID 6kVA</th>
+                        <td class="tg-0lax">Load [VA]</td>
+                        <td class="tg-0lax">{{ form.ups_BL05ID_load }}</td>
+                        <td class="tg-0lax">Stan Pracy</td>
+                        <td class="tg-0lax">{{ form.ups_BL05ID_working_status }}</td>
+                        <td class="tg-0lax">Temp. [℃]</td>
+                        <td class="tg-0lax">{{ form.ups_BL05ID_working_temp }}</td>
+                        <td class="tg-0lax" rowspan="2">{{ form.ups_BL05ID_notes }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">Awarie</td>
+                        <td class="tg-0lax">{{ form.ups_BL05ID_failures }}</td>
+                        <td class="tg-0lax">Napięcie Baterii [V]</td>
+                        <td class="tg-0lax">{{ form.ups_BL05ID_battery_voltages }}</td>
+                        <td class="tg-0lax">Wentylatory chłodzące</td>
+                        <td class="tg-0lax">{{ form.ups_BL05ID_cooling_fans }}</td>
+                    </tr>
+                    <tr>
+                        <th class="tg-0lax" rowspan="2">UPS P.POŻ pom. 1.34 6kVA</th>
+                        <td class="tg-0lax">Load [VA]</td>
+                        <td class="tg-0lax">{{ form.ups_PPOZ_load }}</td>
+                        <td class="tg-0lax">Stan Pracy</td>
+                        <td class="tg-0lax">{{ form.ups_PPOZ_working_status }}</td>
+                        <td class="tg-0lax">Temp. [℃]</td>
+                        <td class="tg-0lax">{{ form.ups_PPOZ_working_temp }}</td>
+                        <td class="tg-0lax" rowspan="2">{{ form.ups_PPOZ_notes }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-0lax">Awarie</td>
+                        <td class="tg-0lax">{{ form.ups_PPOZ_failures }}</td>
+                        <td class="tg-0lax">Napięcie Baterii [V]</td>
+                        <td class="tg-0lax">{{ form.ups_PPOZ_battery_voltages }}</td>
+                        <td class="tg-0lax">Wentylatory chłodzące</td>
+                        <td class="tg-0lax">{{ form.ups_PPOZ_cooling_fans }}</td>
+                    </tr>
+
+        <!--            Baterie kondensatorów-->
+                    <tr>
+                        <th scope="row">S1-1.1RG Bateria Kondensatorów</th>
+                        <td>Temp. [℃]</td>
+                        <td>{{ form.bat11_temp }}</td>
+                        <td>Weekly TPF</td>
+                        <td>{{ form.bat11_weekly_TPF }}</td>
+                        <td>Stan Pracy [Auto./Manual]</td>
+                        <td>{{ form.bat11_working_status }}</td>
+                        <td>{{ form.bat11_notes }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">S1-1.2RG Bateria Kondensatorów</th>
+                        <td>Temp. [℃]</td>
+                        <td>{{ form.bat12_temp }}</td>
+                        <td>Weekly TPF</td>
+                        <td>{{ form.bat12_weekly_TPF }}</td>
+                        <td>Stan Pracy [Auto./Manual]</td>
+                        <td>{{ form.bat12_working_status }}</td>
+                        <td>{{ form.bat12_notes }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">S2-2.1RG Bateria Kondensatorów</th>
+                        <td>Temp. [℃]</td>
+                        <td>{{ form.bat21_temp }}</td>
+                        <td>Weekly TPF</td>
+                        <td>{{ form.bat21_weekly_TPF }}</td>
+                        <td>Stan Pracy [Auto./Manual]</td>
+                        <td>{{ form.bat21_working_status }}</td>
+                        <td>{{ form.bat21_notes }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">S3-3.1RG Bateria Kondensatorów</th>
+                        <td>Temp. [℃]</td>
+                        <td>{{ form.bat31_temp }}</td>
+                        <td>Weekly TPF</td>
+                        <td>{{ form.bat31_weekly_TPF }}</td>
+                        <td>Stan Pracy [Auto./Manual]</td>
+                        <td>{{ form.bat31_working_status }}</td>
+                        <td>{{ form.bat31_notes }}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Centralna Bateria Oświetlenia aw.</th>
+                        <td>Napięcie baterii [V]</td>
+                        <td>{{ form.battery_voltages }}</td>
+                        <td>Mains/Charge [stan]</td>
+                        <td>{{ form.mains_charge }}</td>
+                        <td>BSWOK/Charger ok / Control</td>
+                        <td>{{ form.bswok_charger }}</td>
+                        <td>{{ form.central_battery_notes }}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Rozdzielnica RGE-A,C</th>
+                        <td>Zasilanie tor 1 [V]</td>
+                        <td>{{ form.supply_tor_1 }}</td>
+                        <td>Zasilanie tor 2 [V]</td>
+                        <td>{{ form.supply_tor_2 }}</td>
+                        <td>SZR nn</td>
+                        <td>{{ form.szr_nn }}</td>
+                        <td>{{ form.rozdz_rge_ac_notes }}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Aktywny Filtr tunel tech.</th>
+                        <td>Stan Pracy</td>
+                        <td>{{ form.working_status }}</td>
+                        <td>Awarie</td>
+                        <td>{{ form.failures }}</td>
+                        <td>THDU [%]</td>
+                        <td>{{ form.thd_u }}</td>
+                        <td>{{ form.active_filter_notes }}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Oświetlenie Awaryjne - Portiernia</th>
+                        <td>Nr oprawy w stanie błędu</td>
+                        <td>{{ form.luminaire_number }}</td>
+                        <td>Typ błędu</td>
+                        <td>{{ form.error_type }}</td>
+                        <td>Stan lampek</td>
+                        <td>{{ form.lamp_status }}</td>
+                        <td>{{ form.el_notes }}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Sygnalizacja przegrzania transformatorów</th>
+                        <td>Stan lamp portiernia [zał/wył]</td>
+                        <td>{{ form.lamp_status_concierge }}</td>
+                        <td>Stan lamp RaTRxx [zał/wył]</td>
+                        <td>{{ form.lamp_status_RaRTxx }}</td>
+                        <td colspan="2"></td>
+                        <td>{{ form.sto_notes }}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Rozdz. 1.1RG</th>
+                        <td>THD U [%]</td>
+                        <td>{{ form.rg11_thd_u }}</td>
+                        <td>THD I [%]</td>
+                        <td>{{ form.rg11_thd_i }}</td>
+                        <td colspan="2"></td>
+                        <td>{{ form.rg11_thd_notes }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Rozdz. 1.2RG</th>
+                        <td>THD U [%]</td>
+                        <td>{{ form.rg12_thd_u }}</td>
+                        <td>THD I [%]</td>
+                        <td>{{ form.rg12_thd_i }}</td>
+                        <td colspan="2"></td>
+                        <td>{{ form.rg12_thd_notes }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Rozdz. 2.1RG</th>
+                        <td>THD U [%]</td>
+                        <td>{{ form.rg21_thd_u }}</td>
+                        <td>THD I [%]</td>
+                        <td>{{ form.rg21_thd_i }}</td>
+                        <td colspan="2"></td>
+                        <td>{{ form.rg21_thd_notes }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Rozdz. 3.1RG</th>
+                        <td>THD U [%]</td>
+                        <td>{{ form.rg31_thd_u }}</td>
+                        <td>THD I [%]</td>
+                        <td>{{ form.rg31_thd_i }}</td>
+                        <td colspan="2"></td>
+                        <td>{{ form.rg31_thd_notes }}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Zasilanie wyłącznika ppoż. z trafo sep.</th>
+                        <td>Wskaźnik Napięcia</td>
+                        <td>{{ form.voltage_indicator }}</td>
+                        <td colspan="4"></td>
+                        <td>{{ form.indicator_notes }}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <div class="container px-4 text-center">
+                <p>Data wykonania obchodu: {{ form.date }}</p>
+                <p>Obchód wykonał: {{ form.author }}</p>
+                <button type="submit" class="btn btn-outline-success btn-sm">Zapisz Obchód</button>
+            </div>
+        </form>
+{% endblock content %}
