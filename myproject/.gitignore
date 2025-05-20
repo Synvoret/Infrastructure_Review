@@ -4,3 +4,4 @@ ignored.txt
 
 # można dodawać katalog jako /nazwa_katalogu
 /.idea
+venv/
